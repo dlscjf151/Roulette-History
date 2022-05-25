@@ -31,25 +31,43 @@ VgwkAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAABJRU5ErkJggg=="/>
 </svg>
       </v-col>
       <v-col cols="13" sm="10" md="5">
-
         <v-text-field
             label="Address"
             solo
             dense
             class="pt-3"
+            v-model="address"
+            v-on:keyup.enter="search"
         ></v-text-field>
       </v-col>
     </v-row>
-    <Cards/>
+    <Cards v-model="events"/>
   </v-container>
 </template>
 
 <script>
-import Cards from '../components/Cards'
+import Cards from '@/components/Cards'
+import web3Instance from '@/js/web3'
 
 export default {
   name: "Home",
-  components: {Cards}
+  components: {Cards},
+  data() {
+    return {
+      address: "",
+      events: []
+    }
+  },
+  created: function () {
+    web3Instance.init();
+  },
+  methods: {
+    search: function () {
+      web3Instance.search(this.address).then(events =>
+        this.events = events
+      )
+    }
+  }
 }
 </script>
 
