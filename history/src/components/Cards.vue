@@ -23,6 +23,16 @@
               <span>상금 : {{ toEther(event.returnValues.prize) }} ether</span>
             </v-col>
           </v-row>
+          <v-row>
+            <v-col>
+              <span>Block Number : {{ event.blockNumber }}</span>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col>
+              <span>Tx Hash : {{ event.transactionHash }}</span>
+            </v-col>
+          </v-row>
         </v-card-text>
       </v-card>
     </v-row>

@@ -64,7 +64,7 @@ export default {
   methods: {
     search: function () {
       web3Instance.search(this.address).then(events =>
-        this.events = events
+          this.events = events.reverse()
       )
     }
   }
